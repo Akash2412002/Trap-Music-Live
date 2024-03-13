@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 # Trap-Music-Live
 Trap Music Live
-=======
-# Trap-Music
-Trap Music is a Music Player Application
 
-Live Repo Link : https://github.com/Akash2412002/Trap-Music-Live.git
+Live Link : 
 
 Demo Viedo Link: https://youtu.be/msH-M0fzD3E?si=oUdhaGvMKGKzjEWW
 
@@ -33,4 +29,3 @@ How to Use This Project:
 9. Creating Playlists: Registered users can create unique playlists for them and add songs to them.
 10. Adding Songs to Playlists: Users can add songs to their playlists by searching for songs and selecting the ones they want to add.
 11. Users can favorite / unfavorite the songs and they can view the favorited songs list.
->>>>>>> 003eb46 (Initial Commit)
