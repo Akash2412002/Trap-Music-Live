@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Trap Music</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="container">
+        <form id="loginForm" action="/auth/login" method="post" class="text-center">
+            <h2>LOGIN TO TRAP MUSIC</h2>
+            <div class="mb-3 input-field">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="mb-3 input-field">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary button">Login</button>
+            <br><br>
+            <p> Don't have an account? <a href="/auth/register">Register here</a></p>
+            <p><a href="/auth/forgotpassword">Forgot Password?</p>
+        </form>
+    </div>
+</body>
+<script>
+//Event listener to the login form submission
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 		// Prevent default form submission(Prevent Auto Submission)
+    var formData = new FormData(this);			//store the form data
+    fetch('/auth/login', {
+        method: 'POST',
+        body: formData		// Set the form data as the request body
+    })
+    .then(response => response.json())		// response body as JSON
+    .then(data => {
+        if (data.success) {
+            alert('Login successful');
+            window.location.href = data.redirectUrl;
+        } else {
+            alert('Login failed: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error occurred while logging in. Please try again later.');
+    });
+});
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Homepage</title>
+    <link rel="stylesheet" href="/css/customer.css">
+</head>
+<body>
+
+<!-- Navigation Bar-->
+	<nav class="nav">
+	    <a href="/" class="logo">Trap Music</a>
+	    <ul class="nav-links">
+	        <form th:action="@{/songs/search}" method="get">
+	            <input type="text" placeholder="Search songs..." name="keyword">
+	            <button class="search-button" type="submit">
+	                <i class="bi bi-search"></i> <span>Search</span>
+	            </button>
+	        </form>
+	        <form action="/logout" method="get">
+	            <button type="submit">Logout</button>
+	        </form>
+	    </ul>
+	</nav>
+	<!-- Greeting -->
+	<div class="greeting">
+	    <h2>Welcome, <span th:text="${session.user?.name}"></span></h2>
+	</div>
+	<div class="container">
+    <div class="card">
+        <div class="circle">
+            <h2>01</h2>
+        </div>
+        <div class="content">
+            <p>"Browse our trap songs collection. Find different types of music to listen to. Explore new songs and enjoy your favorite ones."</p>
+            <a href="/songs/viewsongs">View Songs</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="circle">
+            <h2>02</h2>
+        </div>
+        <div class="content">
+            <p>"Make your own playlist. Add songs you like. Choose from various genres and artists. Create a playlist for any mood or occasion."</p>
+            <a href="/songs/createplaylist">Create Playlist</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="circle">
+            <h2>03</h2>
+        </div>
+        <div class="content">
+            <p>"See your playlists here. Listen to the songs you added. Enjoy your personalized music collections anytime."</p>
+            <a href="/songs/viewplaylist">View Playlist</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/addsongs.css">
+</head>
+<body>
+	<!-- Navigation Bar-->
+	<nav class="nav">
+	    <a href="/" class="logo">Trap Music</a>
+	    <ul class="nav-links">
+	        <form th:action="@{/songs/search}" method="get">
+	            <input type="text" placeholder="Search songs..." name="keyword">
+	            <button class="search-button" type="submit">
+	                <i class="bi bi-search"></i> <span>Search</span>
+	            </button>
+	        </form>
+	        <form action="/songs/viewsongs" method="get">
+	            	<button type="submit">View Songs</button>
+	        		</form>
+	        <form action="/logout" method="get">
+	            <button type="submit">Logout</button>
+	        </form>
+	    </ul>
+	</nav>
+    <div class="container">
+        <h1>Add Song</h1>
+        <form action="/songs/addsongs" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Song Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="artist" class="form-label">Artist</label>
+                <input type="text" class="form-control" id="artist" name="artist" required>
+            </div>
+            <div class="mb-3">
+                <label for="genre" class="form-label">Genre</label>
+                <input type="text" class="form-control" id="genre" name="genre" required>
+            </div>
+            <div class="mb-3">
+                <label for="link" class="form-label">Link</label>
+                <input type="text" class="form-control" id="link" name="link" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Song</button>
+        </form>
+    </div>
+</body>
+</html>

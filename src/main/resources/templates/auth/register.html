@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Register - Trap Music</title>
+    <link href="/css/register.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <form action="/auth/register" method="post" class="text-center">
+        <h2>CREATE ACCOUNT</h2>
+        <div class="mb-3 input-field">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+        <div class="mb-3 input-field">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div class="mb-3 input-field">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <div class="mb-3 input-field">
+            <label for="gender" class="form-label">Gender:</label>
+            <select name="gender" id="gender" required>
+                <option value="" disabled selected>Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="mb-3 input-field">
+            <label for="role" class="form-label">Role:</label>
+            <select name="role" id="role" required>
+                <option value="" disabled selected>Select role</option>
+                <option value="admin">Admin</option>
+                <option value="customer">Customer</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary button">REGISTER</button>
+        <br><br>
+        <p>Already have an account? <a href="/auth/login">Login here</a></p>
+    </form>
+</div>
+</body>
+</html>

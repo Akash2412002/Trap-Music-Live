@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Homepage</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+	<!-- Navigation Bar-->
+		<nav class="nav">
+    		<a href="/" class="logo">Trap Music</a>
+
+    		<ul class="nav-links">
+       			<form th:action="@{/songs/search}" method="get">
+            		<input type="text" placeholder="Search songs..." name="keyword">
+            		<button class="search-button" type="submit">
+                	<i class="bi bi-search"></i> <span>Search</span>
+           			 </button>
+        		</form>
+        		<form action="/logout" method="get">
+            		<button type="submit">Logout</button>
+        		</form>
+            	</form>
+        		<form action="/songs/addsongs" method="get">
+            		<button type="submit">Welcome Admin!</button>
+        		</form>
+    </ul>
+</nav>
+    <div class="container">
+       <div class="card">
+        <div class="circle">
+            <h2>01</h2>
+        </div>
+        <div class="content">
+            <p>"Expand our Trap Songs Collection! As an admin, you're empowered to enrich our music library."</p>
+            <a href="/songs/addsongs">Add Songs</a>
+        </div>
+    </div>
+       <div class="card">
+        <div class="circle">
+            <h2>02</h2>
+        </div>
+        <div class="content">
+            <p>"Browse our trap songs collection. Explore new songs and enjoy your favorite ones."</p>
+            <a href="/songs/viewsongs">View Songs</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="circle">
+            <h2>03</h2>
+        </div>
+        <div class="content">
+            <p>"Make your own playlist. Add songs you like. Create a playlist for any mood or occasion."</p>
+            <a href="/songs/createplaylist">Create Playlist</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="circle">
+            <h2>04</h2>
+        </div>
+        <div class="content">
+            <p>"See your playlists here. Enjoy your personalized music collections anytime you want."</p>
+            <a href="/songs/viewplaylist">View Playlist</a>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

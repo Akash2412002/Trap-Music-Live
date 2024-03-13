@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Songs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/viewsongs.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Explore Songs</h1>
+        <!-- Navigation Bar-->
+        <nav class="nav">
+            <a href="/" class="logo">Trap Music</a>
+            <ul class="nav-links">
+                <form th:action="@{/songs/search}" method="get">
+                    <input type="text" placeholder="Search songs..." name="keyword">
+                    <button class="search-button" type="submit">
+                        <i class="bi bi-search"></i> <span>Search</span>
+                    </button>
+                	</form>
+                	<form action="/songs/favorites" method="get">
+			            <button type="submit">View Favorites</button>
+			        </form>
+                	<form action="/songs/createplaylist" method="get">
+	            		<button type="submit">Create Playlist</button>
+	        		</form>
+			        <form action="/songs/viewplaylist" method="get">
+			            <button type="submit">View Playlist</button>
+			        </form>
+                <form action="/logout" method="get">
+                    <button type="submit">Logout</button>
+                </form>
+            </ul>
+        </nav>      
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Artist</th>
+                    <th scope="col">Genre</th>
+                    <th scope="col">Play</th>
+                    <th scope="col">Favorite</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic content with Thymeleaf -->
+                <tr th:each="song : ${songslist}">
+                    <td th:text="${song.id}"></td>
+                    <td th:text="${song.name}"></td>
+                    <td th:text="${song.artist}"></td>
+                    <td th:text="${song.genre}"></td>
+                    <td>
+                        <audio controls>
+                            <source th:src="${song.link}" type="audio/mpeg"></source>
+                        </audio>
+                    </td>
+                    <td>
+					     <button type="button" class="favorite-btn" data-song-id="${song.id}" th:data-song-id="${song.id}">
+					            <i class="fas fa-heart"></i>
+					     </button>                   
+					</td>                 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<!-- Script to handle favorite and unfavorite actions -->
+	<script>
+	document.addEventListener("DOMContentLoaded", function () {
+	    // Get all heart-shaped buttons
+	    const favoriteButtons = document.querySelectorAll(".favorite-btn");
+	    
+	    // Add click event listener to each heart-shaped button
+	    favoriteButtons.forEach(function (button) {
+	        button.addEventListener("click", function () {
+	            // Toggle class to change heart color
+	            this.querySelector("i").classList.toggle("red-heart");
+	            
+	            // Get song ID from data attribute
+	            const songId = this.getAttribute("data-song-id");
+	            console.log("Fetch URL:", "/songs/togglefavorite?songId=" + songId);
+	            // Send a request to toggle favorite status
+	            fetch("/songs/togglefavorite?songId=" + songId)
+	                .then(response => {
+	                    if (response.ok) {
+	                        // Show alert message
+	                        const action = this.querySelector("i").classList.contains("red-heart") ? "added to" : "removed from";
+	                        alert("Song " + action + " favorites");
+	                    } else {
+	                        console.error('Failed to toggle favorite status');
+	                    }
+	                })
+	                .catch(error => {
+	                    console.error('Error:', error);
+	                });
+	        });
+	    });
+	});
+
+	</script>
+	
+</html>
